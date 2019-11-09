@@ -1,7 +1,6 @@
 #include <iostream> 
-  
 // For shared_ptr class 
-#include <memory>  
+#include <memory>
   
 using namespace std; 
   
