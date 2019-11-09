@@ -26,8 +26,6 @@ void Modified_sieve(long long n)
     }
 }
 
-template<class _T>ostream& operator<<(ostream& s, const vector<_T>& v){copy(v.begin(), v.end(), ostream_iterator<_T>(s, " "));return s;}
-
 int main()
 {
     Modified_sieve(100);
