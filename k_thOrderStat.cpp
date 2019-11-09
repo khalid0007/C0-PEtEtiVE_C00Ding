@@ -79,7 +79,5 @@ int main()
 {
     int a[] = {12, 2, 43, 3, 345, 34, 7, 9, 5, 11, 90, 63};
 
-    clock_t start = clock();
-
-    cout << kthSmallest(a, 0, 11, 4) /*<< "\n" << "Time elapsed: " << (float)((clock() - start)/CLOCKS_PER_SEC) << "\n"*/;
+    cout << kthSmallest(a, 0, 11, 4);
 }
