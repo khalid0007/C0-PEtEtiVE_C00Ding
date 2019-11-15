@@ -52,13 +52,9 @@ public:
     void BFS(int source) // s is source
     {
         if(searched_from == source) return;
-        if(source >= sizeof(Adj));
+        if(source >= sizeof(Adj)) return;
 
-        for(int i = 0; i < n; i++) {
-            *(color + i) = White;
-            pi[i] = NILL;
-            d[i] = _INFINITY_;
-        }
+        for(int i = 0; i < n; i++) {color[i] = White; pi[i] = NILL; d[i] = _INFINITY_;}
 
         color[source] = Gray;
         queue<int> q;
