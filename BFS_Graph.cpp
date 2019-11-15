@@ -1,16 +1,17 @@
 #include<bits/stdc++.h>
-
 using namespace std;
 
-// Implementated according to CLRS
+// Implementated as recommended in CLRS
 #define NILL -1
 #define _INFINITY_ INT32_MAX
+enum Color : unsigned char {White, Gray, Black}; // Color Assigned to nodes
+
 class BFS_Graph{
 public:
     vector<int>* Adj; // Adjacency List
     int* d; // Distance from s(source)
     int* pi; // parent of certain node as appears in BFS search
-    char* color; // Color of node during BFS (It can be White(w), Gray(g), Black(b))
+    Color* color; // Color of node during BFS (It can be White(w), Gray(g), Black(b))
     int searched_from;
     int n;
     bool directed;
@@ -20,8 +21,7 @@ public:
         Adj = new vector<int>[n];
         d = new int[n];
         pi = new int[n];
-        color = new char[n + 1];
-        color[n] = '\0';
+        color = new Color[n];
         searched_from = -1;
     }
 
@@ -55,12 +55,12 @@ public:
         if(source >= sizeof(Adj));
 
         for(int i = 0; i < n; i++) {
-            *(color + i) = 'w';
+            *(color + i) = White;
             pi[i] = NILL;
             d[i] = _INFINITY_;
         }
 
-        color[source] = 'g';
+        color[source] = Gray;
         queue<int> q;
         q.push(source);
         d[source] = 0;
@@ -70,15 +70,15 @@ public:
 
             for(auto it: Adj[node])
             {
-                if(color[it] == 'w'){
-                    color[it] = 'g';
+                if(color[it] == White){
+                    color[it] = Gray;
                     d[it] = d[node] + 1;
                     pi[it] = node;
                     q.push(it);
                 }
             }
 
-            color[node] = 'b';
+            color[node] = Black;
         }
 
         searched_from = source;
@@ -103,5 +103,6 @@ public:
 
 int main()
 {
-    BFS_Graph a(10);
+    BFS_Graph a(8);
+    return 0;
 }
