@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Implementated as recommended in CLRS
+// Implementated according to CLRS
 #define NILL -1
 #define _INFINITY_ INT32_MAX
 enum Color : unsigned char {White, Gray, Black}; // Color Assigned to nodes
