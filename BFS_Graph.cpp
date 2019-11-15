@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-#define dbg(x) cout << #x << " = " << x << endl;
 
 using namespace std;
 
@@ -104,13 +103,5 @@ public:
 
 int main()
 {
-    BFS_Graph a(8);
-
-    for(int i = 0; i < 10; i++) a.connect();
-
-    a.BFS(0);
-
-    a.Print_Path(0, 6);
-
-    return 0;
+    BFS_Graph a(10);
 }
