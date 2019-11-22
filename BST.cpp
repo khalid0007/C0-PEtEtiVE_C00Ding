@@ -301,3 +301,23 @@ template<class _Type> iterator_BST<_Type> BST<_Type>::end(){
 }
 
 #endif
+
+
+int main(){
+
+    BST<int> a;
+
+    int x;
+
+    for(int i = 0; i < 5; i++) {
+        cin >> x;
+        a.insert(x);
+    }
+
+    // This will work fine
+    for(auto i : a) cout << i << endl;
+
+    cout << endl;
+
+    return 0;
+}
