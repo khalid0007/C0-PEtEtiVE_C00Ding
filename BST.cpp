@@ -11,10 +11,11 @@ public:
     Node<_Type>* lnode;
     Node<_Type>* rnode;
 
-    Node(_Type val = 0) : data(val), lnode(NULL), rnode(NULL) {}
-};
+    Node(_Type val) : data(val), lnode(NULL), rnode(NULL) {}
+}; 
 
-template<class _Type> class iter_BST;
+
+template<class _Type> class iterator_BST;
 
 template<class _Type> class BST{
 // Attributes
@@ -140,6 +141,7 @@ private:
 public:
     BST() : root(NULL), size(0) {}
 
+
     void insert(_Type value)
     {
         // If tree is empty
@@ -216,12 +218,12 @@ public:
         deleteUtil(prev, cur, relation);
         size--;
     }
-    
-    friend class iter_BST<_Type>;
+
+    friend class iterator_BST<_Type>;
 };
 
 
-template<class _Type> class iter_BST { 
+template<class _Type> class iterator_BST { 
 private: 
     // Stack to store the nodes 
     // of BST 
@@ -229,7 +231,7 @@ private:
   
 public: 
     // Constructor for the class 
-    iter_BST(Node<_Type>* root) 
+    iterator_BST(Node<_Type>* root) 
     { 
         // Initializing stack 
         Node<_Type>* curr = root; 
@@ -237,7 +239,7 @@ public:
             q.push(curr), curr = curr->lnode; 
     }
 
-    iter_BST(BST<_Type>& a){
+    iterator_BST(BST<_Type>& a){
         Node<_Type>* curr = a.root; 
         while (curr != NULL) 
             q.push(curr), curr = curr->lnode; 
@@ -246,7 +248,7 @@ public:
     // Function to return 
     // current element iterator 
     // is pointing to 
-    _Type* curr() 
+    const _Type* curr() 
     { 
         return &(q.top())->data;
     }
