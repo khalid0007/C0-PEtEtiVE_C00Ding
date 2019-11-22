@@ -1,4 +1,4 @@
-// BST header of just copy
+// BST header
 
 // Header guard!!
 #ifndef __NORMAL_BST__H_
