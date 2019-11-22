@@ -12,8 +12,9 @@ public:
     Node<_Type>* rnode;
 
     Node(_Type val = 0) : data(val), lnode(NULL), rnode(NULL) {}
-}; 
+};
 
+template<class _Type> class iter_BST;
 
 template<class _Type> class BST{
 // Attributes
@@ -214,6 +215,57 @@ public:
 
         deleteUtil(prev, cur, relation);
         size--;
+    }
+    
+    friend class iter_BST<_Type>;
+};
+
+
+template<class _Type> class iter_BST { 
+private: 
+    // Stack to store the nodes 
+    // of BST 
+    stack<Node<_Type>*> q;
+  
+public: 
+    // Constructor for the class 
+    iter_BST(Node<_Type>* root) 
+    { 
+        // Initializing stack 
+        Node<_Type>* curr = root; 
+        while (curr != NULL) 
+            q.push(curr), curr = curr->lnode; 
+    }
+
+    iter_BST(BST<_Type>& a){
+        Node<_Type>* curr = a.root; 
+        while (curr != NULL) 
+            q.push(curr), curr = curr->lnode; 
+    }
+
+    // Function to return 
+    // current element iterator 
+    // is pointing to 
+    _Type* curr() 
+    { 
+        return &(q.top())->data;
+    }
+  
+    // Function to iterate to next 
+    // element of BST 
+    void next() 
+    { 
+        Node<_Type>* curr = q.top()->rnode;
+        q.pop(); 
+        while (curr != NULL) 
+            q.push(curr), curr = curr->lnode;
+    } 
+  
+    // Function to check if 
+    // stack is empty 
+    bool isEnd() 
+    { 
+        return !(q.size());
     }
 };
 
