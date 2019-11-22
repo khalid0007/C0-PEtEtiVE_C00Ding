@@ -303,6 +303,24 @@ template<class _Type> iterator_BST<_Type> BST<_Type>::end(){
 #endif
 
 
+/*
+    for( range_declaration : range_expression )
+    
+    becomes:
+
+    {
+        auto && __range = range_expression ;
+
+        for (auto __begin = begin_expr,
+                    __end = end_expr;
+                    __begin != __end; ++__begin) {
+            range_declaration = *__begin;
+            loop_statement
+        }
+    }
+*/
+
+
 int main(){
 
     BST<int> a;
