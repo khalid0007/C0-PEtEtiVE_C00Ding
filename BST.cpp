@@ -141,6 +141,8 @@ private:
 public:
     BST() : root(NULL), size(0) {}
 
+    iterator_BST<_Type> begin();
+    iterator_BST<_Type> end();
 
     void insert(_Type value)
     {
@@ -229,7 +231,8 @@ private:
     // of BST 
     stack<Node<_Type>*> q;
   
-public: 
+public:
+    iterator_BST() {}
     // Constructor for the class 
     iterator_BST(Node<_Type>* root) 
     { 
@@ -249,8 +252,9 @@ public:
     // current element iterator 
     // is pointing to 
     const _Type* curr() 
-    { 
-        return &(q.top())->data;
+    {
+        if(q.size() == 0) return NULL;
+        else return &(q.top())->data;
     }
   
     // Function to iterate to next 
@@ -261,7 +265,7 @@ public:
         q.pop(); 
         while (curr != NULL) 
             q.push(curr), curr = curr->lnode;
-    } 
+    }
   
     // Function to check if 
     // stack is empty 
@@ -269,6 +273,31 @@ public:
     { 
         return !(q.size());
     }
+
+    bool operator!=(iterator_BST<_Type>& a){
+        return (curr() != a.curr());
+    }
+
 };
+
+template<class _Type> const _Type& operator*(iterator_BST<_Type>& a){
+    return *(a.curr());
+}
+
+template<class _Type> void operator++(iterator_BST<_Type>& a){
+    a.next();
+}
+
+template<class _Type> iterator_BST<_Type> BST<_Type>::begin(){
+    iterator_BST<_Type> a(BST<_Type>::root);
+
+    return a;
+}
+
+template<class _Type> iterator_BST<_Type> BST<_Type>::end(){
+    iterator_BST<_Type> a;
+
+    return a;
+}
 
 #endif
