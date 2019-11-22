@@ -190,6 +190,13 @@ public:
             exit(1);
         }
 
+        if(!root->lnode && !root->rnode){
+            delete root;
+            root = NULL;
+            size--;
+            return;
+        }
+
         Node<_Type>* prev = find(value, root), *cur;
         bool relation;
 
@@ -206,6 +213,7 @@ public:
         }
 
         deleteUtil(prev, cur, relation);
+        size--;
     }
 };
 
