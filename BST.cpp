@@ -1,3 +1,10 @@
+// BST header of just copy
+
+// Header guard!!
+#ifndef __NORMAL_BST__H_
+
+#define __NORMAL_BST__H_
+
 template<class _Type> class Node{
 public:
     _Type data;
@@ -201,3 +208,5 @@ public:
         deleteUtil(prev, cur, relation);
     }
 };
+
+#endif
